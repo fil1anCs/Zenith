@@ -15,8 +15,17 @@ jobs:
       - name: Download project
         uses: actions/checkout@v4
 
-      - name: Extract project ZIP
-        run: unzip -q ZENITH_GitHub_Cloud_Build.zip
+            - name: Extract project ZIP
+        run: |
+          echo "Searching for ZIP..."
+          ZIP_FILE="$(find . -type f -iname 'ZENITH_GitHub_Cloud_Build.zip' -print -quit)"
+          if [ -z "$ZIP_FILE" ]; then
+            echo "ZIP NOT FOUND"
+            find . -maxdepth 4 -type f
+            exit 1
+          fi
+          echo "Found: $ZIP_FILE"
+          unzip -q "$ZIP_FILE"
 
       - name: Set up Java
         uses: actions/setup-java@v4
