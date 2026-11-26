@@ -1,0 +1,3 @@
+# Copy these entries into local.properties (never commit real credentials).
+supabase.url=https://YOUR_PROJECT_REF.supabase.co
+supabase.anonKey=YOUR_SUPABASE_PUBLISHABLE_OR_ANON_KEY
